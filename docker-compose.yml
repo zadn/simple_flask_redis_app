@@ -1,0 +1,35 @@
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/code
+        depends_on:
+            - redis
+    redis:
+        image: redis
+        ports:
+            - 6379:6379
+        depends_on:
+            - registrator
+    consul:
+        image:  gliderlabs/consul-server:latest
+        command: "-advertise=127.0.0.1 -server -bootstrap"
+        container_name: consul
+        ports:
+            - 8500:8500
+            - 8400:8400
+            - 8600:8600/udp
+        network_mode: host
+    registrator:
+        image: gliderlabs/registrator:latest
+        command: "consul://localhost:8500"
+        hostname: "localhost"
+        container_name: registrator
+        depends_on:
+            - consul
+        volumes:
+            - /var/run/docker.sock:/tmp/docker.sock
+        network_mode: host

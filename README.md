@@ -1,2 +1,2 @@
-# simple_flask_redis_app
-This repository contains code for a simple Flask and Redis application 
+# Flask Redis Application
+This repository contains code for a simple Flask and Redis application and the config to deploy using docker-compose.
