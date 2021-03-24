@@ -20,9 +20,10 @@ docker build -t compose-flask .
 Start the application from your directory:
 
 ```bash
-$ docker-compose up
+$ docker-compose up --scale web=2
 ```
 
+This will run two node of web application and all the others with single instances.  
 If you have localhost access to your host, point your browser to `http://0.0.0.0:5000`, `http://127.0.0.1:5000`, or `http://localhost:5000`.
  If you do use a remote host, simply use that IP address and append `:5000` to the end.
 
