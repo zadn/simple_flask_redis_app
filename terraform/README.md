@@ -1,7 +1,8 @@
 # Terraform script for EKS
 
 This directory contains all the script required to deploy the Flask application in 
-an AWS EKS cluster using terraform.
+an AWS EKS cluster using terraform. For EKS we do not require Consul for service discovery because it is handled by
+ Kubernetes.
 
 
 # Before Running
